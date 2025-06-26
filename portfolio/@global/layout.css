@@ -1,4 +1,3 @@
-
 /* CSS reset */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -16,23 +15,154 @@ body {
   padding: 2% 5%;
 
   > header nav {
+    /* Glass navigation effects */
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 16px;
+    padding: 1rem 2rem;
+    
+    /* Layout and positioning */
     justify-content: space-between;
     margin-bottom: 4rem;
     display: flex;
+    position: sticky;
+    top: 1rem;
+    z-index: 100;
+    
+    /* Smooth transitions */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    /*  avatar image */
+    /* Glass highlight effect */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      border-radius: 16px 16px 0 0;
+    }
+
+    /* Hover effect for entire nav */
+    &:hover {
+      background: var(--glass-bg-hover);
+      box-shadow: var(--glass-shadow-hover);
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /*  avatar image with glass effect */
     > a:first-child {
       background: url(/img/avatar-rounded.jpg) 0 50% no-repeat;
       background-size: 2em;
       padding-left: 2.5em;
+      font-weight: 600;
+      color: var(--gray-900);
+      position: relative;
+      
+      /* Glass glow effect on logo */
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 2em;
+        height: 2em;
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        z-index: -1;
+        transition: all 0.3s ease;
+      }
+      
+      &:hover::after {
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+      }
     }
 
-    a { padding: 1em 0 }
+    a { 
+      padding: 1em 0;
+      font-weight: 500;
+      color: var(--gray-900);
+      position: relative;
+      transition: all 0.3s ease;
+      
+      /* Glass button effect for nav links */
+      &:not(:first-child) {
+        padding: 0.75em 1.5em;
+        border-radius: 10px;
+        margin-left: 0.5rem;
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(8px);
+          color: var(--automation-blue);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+      }
+
+      /* Current page indicator with glass effect */
+      &[aria-current] {
+        background: linear-gradient(135deg, var(--automation-blue), var(--automation-purple));
+        color: white;
+        border-radius: 10px;
+        padding: 0.75em 1.5em;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        
+        /* Animated glass highlight */
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: left 0.5s ease;
+        }
+        
+        &:hover::before {
+          left: 100%;
+        }
+        
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+      }
+    }
   }
 
   /* content area: hero and sections */
   article {
-    > header { margin-bottom: 2rem }
+    > header { 
+      margin-bottom: 2rem;
+      position: relative;
+      padding: 3rem 0;
+      overflow: hidden;
+      
+      /* Subtle glass background */
+      &::before {
+        content: '';
+        position: absolute;
+        top: -20%;
+        left: -20%;
+        width: 140%;
+        height: 140%;
+        background: 
+          radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+          radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+        z-index: -1;
+        animation: heroBackgroundFlow 15s ease-in-out infinite;
+      }
+    }
 
     > section {
       max-width: 700px;
@@ -40,22 +170,371 @@ body {
     }
   }
 
-  /* global footer */
+  /* global footer with subtle glass effect */
   > footer {
-    border-top: 1px solid var(--gray-200);
+    border-top: 1px solid var(--glass-border);
     margin-top: 8rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px 16px 0 0;
+    padding: 1rem 2rem;
+    position: relative;
+
+    /* Subtle top highlight */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      right: 2rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    }
 
     nav {
       padding: 1rem 0;
       display: flex;
       gap: .5em;
 
-      a { opacity: .8 }
-      a:hover { opacity: 1 }
+      a { 
+        opacity: .8;
+        transition: all 0.3s ease;
+        padding: 0.5rem;
+        border-radius: 6px;
+        
+        &:hover { 
+          opacity: 1;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(4px);
+          transform: translateY(-1px);
+        }
+      }
 
       a:nth-child(2) {
         margin-left: auto;
       }
     }
+  }
+}
+
+/* Hero Section Glass Effects */
+@keyframes heroBackgroundFlow {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: scale(1.1) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Enhanced hero title with glass text effect */
+h1 {
+  position: relative;
+  background: linear-gradient(135deg, var(--gray-900), var(--automation-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Subtle text shadow for depth */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  /* Glass text highlight */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    z-index: -1;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Metrics showcase grid */
+.metrics-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+  padding: 2rem 0;
+}
+
+/* Glass metric cards */
+.glass-metric {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Glass highlight effect */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  }
+  
+  /* Hover effects */
+  &:hover {
+    background: var(--glass-bg-hover);
+    box-shadow: var(--glass-shadow-hover);
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  /* Floating glow effect */
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Metric values with gradient text */
+.glass-metric-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--automation-blue), var(--automation-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  transition: all 0.3s ease;
+}
+
+.glass-metric:hover .glass-metric-value {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* Metric labels */
+.glass-metric-label {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.glass-metric:hover .glass-metric-label {
+  color: var(--automation-blue);
+  opacity: 1;
+}
+
+/* Hero CTA Section */
+.hero-cta {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem 0;
+}
+
+/* Enhanced glass button */
+.glass-button-primary {
+  background: linear-gradient(135deg, var(--automation-blue), var(--automation-purple));
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: 16px;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Glass effect backdrop */
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: 
+    var(--glass-shadow),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  
+  /* Animated shine effect */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+      0 20px 40px rgba(59, 130, 246, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+    filter: brightness(1.1);
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  &:active {
+    transform: translateY(-1px) scale(1.01);
+  }
+}
+
+/* CTA Arrow animation */
+.cta-arrow {
+  transition: transform 0.3s ease;
+  font-size: 1.2em;
+}
+
+.glass-button-primary:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Glass background for body */
+body {
+  position: relative;
+  
+  /* Subtle animated background */
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.02) 0%, transparent 50%);
+    z-index: -2;
+    animation: backgroundFlow 20s ease-in-out infinite;
+  }
+}
+
+@keyframes backgroundFlow {
+  0%, 100% { 
+    filter: hue-rotate(0deg);
+    transform: scale(1) rotate(0deg);
+  }
+  50% { 
+    filter: hue-rotate(90deg);
+    transform: scale(1.1) rotate(180deg);
+  }
+}
+
+/* Floating Animation for Glass Elements */
+@keyframes glassfloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+.glass-float {
+  animation: glassfloat 6s ease-in-out infinite;
+}
+
+.glass-float:nth-child(2) {
+  animation-delay: -2s;
+}
+
+.glass-float:nth-child(3) {
+  animation-delay: -4s;
+}
+
+.glass-float:nth-child(4) {
+  animation-delay: -6s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body > header nav {
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    a:not(:first-child) {
+      padding: 0.5em 1em;
+      margin-left: 0.25rem;
+    }
+  }
+  
+  body > footer {
+    padding: 1rem;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .metrics-showcase {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .glass-metric {
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .glass-metric-value {
+    font-size: 2rem;
+  }
+  
+  .glass-button-primary {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-showcase {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  
+  .glass-metric-value {
+    font-size: 1.75rem;
+  }
+  
+  .glass-metric-label {
+    font-size: 0.75rem;
   }
 }

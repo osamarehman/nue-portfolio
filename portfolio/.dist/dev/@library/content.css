@@ -1,4 +1,4 @@
-/* simple-blog/@library/content.css */
+/* @library/content.css */
 article a {
   text-decoration: underline var(--main-500) 1px;
   text-underline-offset: 3px;

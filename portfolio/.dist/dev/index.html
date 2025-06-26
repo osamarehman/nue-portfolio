@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Emma Bennet / Minimalist, UX developer, designer, urban explorer</title>
+<title>Usama Rehman Mughal / Business Growth Automation Specialist &#x2022; &#x24;300K+ Client Results</title>
 <link rel="icon" type="image/jpg" href="/img/favicon.jpg">
 <script src="/@nue/hotreload.js" type="module"></script>
 <script src="/@nue/view-transitions.js" type="module"></script>
-<style href="/@global/colors.css">/* simple-blog/@global/colors.css */
+<style href="/@global/colors.css">/* @global/colors.css */
 :root {
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
@@ -22,7 +22,7 @@
   --marker: #ffff7a;
 }
 </style>
-<style href="/@global/layout.css">/* simple-blog/@global/layout.css */
+<style href="/@global/layout.css">/* @global/layout.css */
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -38,22 +38,135 @@ body {
 }
 
 body > header nav {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
   display: flex;
+  position: sticky;
+  z-index: 100;
+  border-radius: 16px;
   justify-content: space-between;
   margin-bottom: 4rem;
+  padding: 1rem 2rem;
+  transition: all .3s cubic-bezier(.4,0,.2,1);
+  top: 1rem;
+}
+
+body > header nav:before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(90deg, #0000, #fff6, #0000);
+  border-radius: 16px 16px 0 0;
+  height: 1px;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+body > header nav:hover {
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  border-color: #ffffff40;
+  transform: translateY(-1px);
 }
 
 body > header nav > a:first-child {
+  color: var(--gray-900);
+  position: relative;
   background: url("/img/avatar-rounded.jpg") 0 / 2em no-repeat;
   padding-left: 2.5em;
+  font-weight: 600;
+}
+
+body > header nav > a:first-child:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  transition: all .3s;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  box-shadow: 0 0 20px #3b82f64d;
+}
+
+body > header nav > a:first-child:hover:after {
+  box-shadow: 0 0 30px #3b82f680;
 }
 
 body > header nav a {
+  color: var(--gray-900);
+  position: relative;
   padding: 1em 0;
+  transition: all .3s;
+  font-weight: 500;
+}
+
+body > header nav a:not(:first-child) {
+  border-radius: 10px;
+  margin-left: .5rem;
+  padding: .75em 1.5em;
+}
+
+body > header nav a:not(:first-child):hover {
+  backdrop-filter: blur(8px);
+  color: var(--automation-blue);
+  background: #ffffff1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px #3b82f626;
+}
+
+body > header nav a[aria-current] {
+  background: linear-gradient(135deg, var(--automation-blue), var(--automation-purple));
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: .75em 1.5em;
+}
+
+body > header nav a[aria-current]:before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(90deg, #0000, #fff3, #0000);
+  width: 100%;
+  height: 100%;
+  transition: left .5s;
+  top: 0;
+  left: -100%;
+}
+
+body > header nav a[aria-current]:hover:before {
+  left: 100%;
+}
+
+body > header nav a[aria-current]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px #3b82f666;
 }
 
 body article > header {
+  position: relative;
+  overflow: hidden;
   margin-bottom: 2rem;
+  padding: 3rem 0;
+}
+
+body article > header:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  animation: heroBackgroundFlow 15s ease-in-out infinite;
+  background: radial-gradient(circle at 30% 20%, #3b82f614 0%, #0000 50%), radial-gradient(circle at 70% 80%, #8b5cf60f 0%, #0000 50%);
+  width: 140%;
+  height: 140%;
+  top: -20%;
+  left: -20%;
 }
 
 body article > section {
@@ -62,8 +175,24 @@ body article > section {
 }
 
 body > footer {
-  border-top: 1px solid var(--gray-200);
+  border-top: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: relative;
+  border-radius: 16px 16px 0 0;
   margin-top: 8rem;
+  padding: 1rem 2rem;
+}
+
+body > footer:before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(90deg, #0000, #ffffff4d, #0000);
+  height: 1px;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
 }
 
 body > footer nav {
@@ -74,17 +203,322 @@ body > footer nav {
 
 body > footer nav a {
   opacity: .8;
+  border-radius: 6px;
+  padding: .5rem;
+  transition: all .3s;
 }
 
 body > footer nav a:hover {
   opacity: 1;
+  backdrop-filter: blur(4px);
+  background: #ffffff1a;
+  transform: translateY(-1px);
 }
 
 body > footer nav a:nth-child(2) {
   margin-left: auto;
 }
+
+@keyframes heroBackgroundFlow {
+  0%, 100% {
+    transform: scale(1)rotate(0);
+    opacity: .7;
+  }
+
+  50% {
+    transform: scale(1.1)rotate(180deg);
+    opacity: 1;
+  }
+}
+
+h1 {
+  position: relative;
+  background: linear-gradient(135deg, var(--gray-900), var(--automation-blue));
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px #0000001a;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+h1:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  background: linear-gradient(135deg, #0000, #ffffff1a, #0000);
+  border-radius: 8px;
+  transition: opacity .3s;
+  inset: 0;
+}
+
+h1:hover:after {
+  opacity: 1;
+}
+
+.metrics-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+  padding: 2rem 0;
+}
+
+.glass-metric {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: all .4s cubic-bezier(.4,0,.2,1);
+}
+
+.glass-metric:before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(90deg, #0000, #fff6, #0000);
+  height: 1px;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.glass-metric:hover {
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  border-color: #ffffff40;
+  transform: translateY(-8px)scale(1.02);
+}
+
+.glass-metric:after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  background: radial-gradient(circle, #3b82f61a 0%, #0000 70%);
+  width: 200%;
+  height: 200%;
+  transition: opacity .3s;
+  top: -50%;
+  left: -50%;
+}
+
+.glass-metric:hover:after {
+  opacity: 1;
+}
+
+.glass-metric-value {
+  background: linear-gradient(135deg, var(--automation-blue), var(--automation-purple));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-bottom: .5rem;
+  transition: all .3s;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.glass-metric:hover .glass-metric-value {
+  filter: brightness(1.2);
+  transform: scale(1.05);
+}
+
+.glass-metric-label {
+  color: var(--gray-600);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  opacity: .8;
+  transition: all .3s;
+  font-size: .875rem;
+  font-weight: 600;
+}
+
+.glass-metric:hover .glass-metric-label {
+  color: var(--automation-blue);
+  opacity: 1;
+}
+
+.hero-cta {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem 0;
+}
+
+.glass-button-primary {
+  background: linear-gradient(135deg, var(--automation-blue), var(--automation-purple));
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow), 0 0 0 1px #ffffff1a inset;
+  border: 1px solid #3b82f666;
+  border-radius: 16px;
+  align-items:  center;
+  gap: .75rem;
+  padding: 1.25rem 2.5rem;
+  transition: all .3s cubic-bezier(.4,0,.2,1);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.glass-button-primary:before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(90deg, #0000, #ffffff4d, #0000);
+  width: 100%;
+  height: 100%;
+  transition: left .6s;
+  top: 0;
+  left: -100%;
+}
+
+.glass-button-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-3px)scale(1.02);
+  box-shadow: 0 20px 40px #3b82f64d, inset 0 0 0 1px #fff3;
+}
+
+.glass-button-primary:hover:before {
+  left: 100%;
+}
+
+.glass-button-primary:active {
+  transform: translateY(-1px)scale(1.01);
+}
+
+.cta-arrow {
+  transition: transform .3s;
+  font-size: 1.2em;
+}
+
+.glass-button-primary:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+body {
+  position: relative;
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  z-index: -2;
+  animation: backgroundFlow 20s ease-in-out infinite;
+  background: radial-gradient(circle at 20% 80%, #3b82f608 0%, #0000 50%), radial-gradient(circle at 80% 20%, #8b5cf608 0%, #0000 50%), radial-gradient(circle at 40% 40%, #06b6d405 0%, #0000 50%);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+@keyframes backgroundFlow {
+  0%, 100% {
+    filter: hue-rotate(0deg);
+    transform: scale(1)rotate(0);
+  }
+
+  50% {
+    filter: hue-rotate(90deg);
+    transform: scale(1.1)rotate(180deg);
+  }
+}
+
+@keyframes glassfloat {
+  0%, 100% {
+    transform: translateY(0)rotate(0);
+  }
+
+  33% {
+    transform: translateY(-10px)rotate(1deg);
+  }
+
+  66% {
+    transform: translateY(5px)rotate(-1deg);
+  }
+}
+
+.glass-float {
+  animation: glassfloat 6s ease-in-out infinite;
+}
+
+.glass-float:nth-child(2) {
+  animation-delay: -2s;
+}
+
+.glass-float:nth-child(3) {
+  animation-delay: -4s;
+}
+
+.glass-float:nth-child(4) {
+  animation-delay: -6s;
+}
+
+@media (max-width: 768px) {
+  body > header nav {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: .75rem 1.5rem;
+  }
+
+  body > header nav a:not(:first-child) {
+    margin-left: .25rem;
+    padding: .5em 1em;
+  }
+
+  body > footer {
+    border-radius: 12px 12px 0 0;
+    padding: 1rem;
+  }
+
+  .metrics-showcase {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .glass-metric {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+  }
+
+  .glass-metric-value {
+    font-size: 2rem;
+  }
+
+  .glass-button-primary {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-showcase {
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+  }
+
+  .glass-metric-value {
+    font-size: 1.75rem;
+  }
+
+  .glass-metric-label {
+    font-size: .75rem;
+  }
+}
 </style>
-<style href="/@global/typography.css">/* simple-blog/@global/typography.css */
+<style href="/@global/typography.css">/* @global/typography.css */
 body {
   font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Segoe UI, Roboto;
 }
@@ -137,7 +571,7 @@ p, li {
   color: var(--gray-800);
 }
 </style>
-<style href="/@library/gallery.css">/* simple-blog/@library/gallery.css */
+<style href="/@library/gallery.css">/* @library/gallery.css */
 .gallery {
   list-style: none;
   margin-block-start: 4rem;
@@ -191,7 +625,7 @@ p, li {
   max-width: 18em;
 }
 </style>
-<style href="/@library/motion.css">/* simple-blog/@library/motion.css */
+<style href="/@library/motion.css">/* @library/motion.css */
 header, h1, h1 + p, h1 + p + * {
   filter: none;
   opacity: 1;
@@ -227,12 +661,12 @@ article {
 }
 </style>
 <meta name="generator" content="Nue v1.0.0-RC.4 (nuejs.org)">
-<meta name="date.updated" content="2025-06-26T11:16:38.893Z">
-<meta name="description" content="I&apos;m Emma Bennett, a design engineer from Berlin. I build websites that are exceptionally well-designed &#x2014; inside, and outside.">
-<meta name="author" content="Emma Bennet">
-<meta property="og:title" content="Minimalist, UX developer, designer, urban explorer">
-<meta property="og:description" content="I&apos;m Emma Bennett, a design engineer from Berlin. I build websites that are exceptionally well-designed &#x2014; inside, and outside.">
-<meta property="og:image" content="https://simple-blog.nuejs.org/img/og_emma.png">
+<meta name="date.updated" content="2025-06-26T12:03:03.305Z">
+<meta name="description" content="I&apos;m Usama Rehman Mughal, a Business Growth Automation Specialist from Pakistan. I help business owners reclaim 20+ hours per week through smart automation that generates real ROI &#x2014; not just cool tech.">
+<meta name="author" content="Usama Rehman Mughal">
+<meta property="og:title" content="Business Growth Automation Specialist &#x2022; &#x24;300K+ Client Results">
+<meta property="og:description" content="I&apos;m Usama Rehman Mughal, a Business Growth Automation Specialist from Pakistan. I help business owners reclaim 20+ hours per week through smart automation that generates real ROI &#x2014; not just cool tech.">
+<meta property="og:image" content="https://usama-automation.com/img/avatar.png">
 <meta name="nue:components" content=" ">
 <meta name="nue:include" content="gallery motion">
 <meta name="nue:globals" content="@global">
@@ -243,7 +677,9 @@ article {
   <body>
     
     <header>
-  <nav><a href="/">Emma Bennet</a>
+  <nav><a href="/">Usama Mughal</a>
+<a href="/#services">Services</a>
+<a href="/automation-case-studies/">Case Studies</a>
 <a href="/contact/">Contact</a></nav>
 </header>
     
@@ -252,10 +688,23 @@ article {
 
     <article>
       
-      <section><h1>Minimalist, UX developer, designer, urban explorer</h1>
-<p>I&apos;m Emma Bennett, a design engineer from Berlin. I build websites that are exceptionally well-designed &#x2014; inside, and outside.</p>
+      <section><h1>Business Growth Automation Specialist &#x2022; &#x24;300K+ Client Results</h1>
+<p>I&apos;m Usama Rehman Mughal, a Business Growth Automation Specialist from Pakistan. I help business owners reclaim 20+ hours per week through smart automation that generates real ROI &#x2014; not just cool tech.</p>
+<div class="metrics-showcase"><div class="glass-metric glass-float"><div class="glass-metric-value"></div>
+<div class="glass-metric-label"></div></div>
+<div class="glass-metric glass-float"><div class="glass-metric-value"></div>
+<div class="glass-metric-label"></div></div>
+<div class="glass-metric glass-float"><div class="glass-metric-value"></div>
+<div class="glass-metric-label"></div></div>
+<div class="glass-metric glass-float"><div class="glass-metric-value"></div>
+<div class="glass-metric-label"></div></div></div>
+<div class="hero-cta"><div class="glass-button-primary"><p>Get Your Free Automation Audit</p>
+<div class="cta-arrow"></div></div></div>
 <ul class="gallery"><li><a href="/blog/scaleable-design-system.html"><figure><img src="/blog/img/ui-thumb.png" loading="lazy"><figcaption><time datetime="2025-01-18T00:00:00.000Z">January 18, 2025</time><h2>Crafting a scalable CSS design system</h2><p>Design systems are key to managing code at scale, but creating one that&#x2019;s flexible and maintainable takes work. A key to success is to break UI elements into reusable, abstracted components.</p></figcaption></figure></a></li>
+<li><a href="/blog/saas-lead-generation-automation.html"><figure><img src="/blog/img/saas-automation-thumb.webp" loading="lazy"><figcaption><time datetime="2024-12-15T00:00:00.000Z">December 15, 2024</time><h2>How I Generated &#x24;50K Additional MRR for a SaaS Client Through Lead Automation</h2><p>A B2B SaaS startup was burning out their sales team with manual lead qualification. They were spending 60+ hours per week manually sorting leads, and their conversion rate was stuck at 2.1%. Here&apos;s how I transformed their entire lead generation process in 4 weeks.</p></figcaption></figure></a></li>
+<li><a href="/blog/lindy-ai-vs-zapier-guide.html"><figure><img src="/blog/img/tools-comparison-thumb.png" loading="lazy"><figcaption><time datetime="2024-11-28T00:00:00.000Z">November 28, 2024</time><h2>Lindy AI vs Zapier vs Make: Choosing the Right Automation Tool for Your Business</h2><p>After building 35+ automation systems and managing &#x24;300K+ in client results, I get this question constantly: <q>Which automation tool should I use?</q> The answer isn&apos;t simple, but I&apos;ll break down exactly when to use each platform based on real client scenarios.</p></figcaption></figure></a></li>
 <li><a href="/blog/color-strategies.html"><figure><img src="/blog/img/colors-thumb.png" loading="lazy"><figcaption><time datetime="2024-11-23T00:00:00.000Z">November 23, 2024</time><h2>Practical strategies for using colors in CSS</h2><p>Working with color is one of the most fun parts of web design. In this post, we&apos;ll explore simple, real-world tips for effectively using color in your stylesheets.</p></figcaption></figure></a></li>
+<li><a href="/blog/ecommerce-order-automation.html"><figure><img src="/blog/img/ecommerce-thumb.png" loading="lazy"><figcaption><time datetime="2024-08-20T00:00:00.000Z">August 20, 2024</time><h2>From 15-Hour Manual Process to 1-Hour Automation: E-commerce Order Fulfillment Transformation</h2><p>A growing online retailer was drowning in manual order processing. Every day meant 15+ hours of copying data between systems, manually updating inventory, and sending tracking emails. Here&apos;s how I automated their entire order-to-delivery workflow and saved them &#x24;8,000 monthly in labor costs.</p></figcaption></figure></a></li>
 <li><a href="/blog/class-naming-strategies.html"><figure><img src="/blog/img/dashboard-thumb.png" loading="lazy"><figcaption><time datetime="2024-08-13T00:00:00.000Z">August 13, 2024</time><h2>CSS class naming strategies for scalable dashboard design</h2><p>In web development, CSS and design work hand-in-hand to create compelling user experiences. CSS brings designs to life digitally, translating visual mockups into actual rendered elements.</p></figcaption></figure></a></li></ul></section>
       
     </article>
@@ -263,10 +712,11 @@ article {
     
   </main>
     <footer>
-  <nav><a href="/">&#xa9; Emma Bennet</a>
-<a href="//x.com/tipiirai"><img src="/img/twitter.svg" width="22" height="22" alt="Twitter (X) profile"></a>
-<a href="//github.com/nuejs/nue/"><img src="/img/github.svg" width="22" height="22" alt="Github Projects"></a>
-<a href="//linkedin.com/in/tipiirai"><img src="/img/linkedin.svg" width="22" height="22" alt="LinkedIn profile"></a></nav>
+  <nav><a href="/">&#xa9; Usama Mughal</a>
+<a href="Automation Specialist">text</a>
+<a href="https://www.upwork.com/freelancers/~your-upwork-profile"><img src="/img/upwork.svg" width="22" height="22" alt="Upwork Profile - Top Rated Plus"></a>
+<a href="https://linkedin.com/in/usama-automation"><img src="/img/linkedin.svg" width="22" height="22" alt="LinkedIn Profile"></a>
+<a href="https://github.com/usama-automation"><img src="/img/github.svg" width="22" height="22" alt="Automation Projects"></a></nav>
 </footer>
     
   </body>

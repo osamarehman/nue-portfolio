@@ -1,4 +1,4 @@
-/* simple-blog/@library/forms.css */
+/* @library/forms.css */
 :focus-visible {
   outline: 3px solid var(--gray-100);
   border-color: var(--main-500);
